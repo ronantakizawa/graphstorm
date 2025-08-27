@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graphstorm"
+dynamic = ["version"]
+description = "GraphStorm"
+readme = {file = "README.md", content-type = "text/markdown"}
+license = {text = "Apache-2.0"}
+requires-python = ">=3.8"
+authors = [
+    {name = "GraphStorm Team"}
+]
+keywords = ["graph", "machine learning", "deep learning", "pytorch"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "h5py",
+    "pyarrow",
+    "transformers==4.48.0",
+    "pandas",
+    "scikit-learn",
+    "ogb==1.3.6",
+    "packaging",
+    "psutil",
+    "torchdata==0.9.0",
+    "pydantic"
+]
+
+[project.optional-dependencies]
+tensorboard = [
+    "tensorboard>=1.15"
+]
+test = [
+    "pytest>=6.0",
+    "tensorboard>=1.15",
+]
+
+[project.urls]
+Homepage = "https://github.com/awslabs/graphstorm"
+Repository = "https://github.com/awslabs/graphstorm"
+Issues = "https://github.com/awslabs/graphstorm/issues"
+Documentation = "https://graphstorm.readthedocs.io/"
+
+[tool.setuptools]
+package-dir = {"" = "python"}
+zip-safe = true
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["python"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+"*" = ["datasets/dataset_checksums/*.txt"]
+
+[tool.setuptools_scm]
+root = "."
+fallback_version = "0.5.0"

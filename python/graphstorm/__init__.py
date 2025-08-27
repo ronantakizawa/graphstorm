@@ -16,7 +16,16 @@
     Graphstorm package.
 """
 # pylint: disable=wrong-import-position
-__version__ = "0.5.0"
+try:
+    from importlib.metadata import version
+    __version__ = version("graphstorm")
+except ImportError:
+    # fallback for older Python versions
+    try:
+        from importlib_metadata import version
+        __version__ = version("graphstorm")
+    except ImportError:
+        __version__ = "0.5.0"
 import warnings
 
 # Don't print torchdata warnings
