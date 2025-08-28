@@ -16,17 +16,14 @@
     Graphstorm package.
 """
 # pylint: disable=wrong-import-position
-try:
-    from importlib.metadata import version
-    __version__ = version("graphstorm")
-except ImportError:
-    # fallback for older Python versions
-    try:
-        from importlib_metadata import version
-        __version__ = version("graphstorm")
-    except ImportError:
-        __version__ = "0.5.0"
 import warnings
+from datetime import datetime
+
+__version__ = "0.5.0"
+
+# Apply the original dev date logic
+if __version__.endswith('dev'):
+    __version__ = __version__ + datetime.today().strftime('%Y%m%d')
 
 # Don't print torchdata warnings
 warnings.filterwarnings(
